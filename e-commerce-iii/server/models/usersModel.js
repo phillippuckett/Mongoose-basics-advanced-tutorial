@@ -1,6 +1,6 @@
 /** These 'Require's are necessary for to set up the schema*/
 var mongoose = require('mongoose');
-var Schema = new mongoose.Schema;
+var Schema = mongoose.Schema;
 
 /** Password varification */
 var passwordVarifier = [
@@ -10,11 +10,11 @@ var passwordVarifier = [
 ];
     
 /** Schema Object */
-var userSchema = Schema({
+var UserSchema = new Schema({
     name: { type: String, required: true },
     age: { type: Number, require: true },
     password: { type: String, varify: passwordVarifier },
 });
 
 /** The model for the schema above*/
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', UserSchema);

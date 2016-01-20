@@ -1,30 +1,37 @@
-var User = require('../models/User');
+var Order = require('./../models/orderModel');
 
 module.exports = {
-    
+
     addToCart: function (req, res, next) {
-        User.findById(req.params.userId, function (err, user) {
+        Order.create(req.body, function (err, addToCart) {
             if (err) { res.status(500).send(err); }
             else {
-                user.cart.push(req.query.productId);
-                user.save(function () {
-                    User.findById(req.params.userId).populate('cart')
-                        .exec(function (err, user) {
-                            res.status(200).send(user.cart);
+                Order.cart.push(req.query.productId);
+                Order.save(function () {
+                    Order.findById(req.params.userId).populate('cart')
+                        .exec(function (err, addToCart) {
+                            res.status(200).send(addToCart.cart);
                         })
                 })
             }
         })
     },
 
+    createOrder: function (req, res, next) {
+        Order.create(req.body, function (err, createOrder) {
+            if (err) { res.status(500).send(err); }
+            else { res.status(200).send(createOrder); }
+        })
+    },
+
     removeFromCart: function (req, res, next) {
-        User.findById(req.params.userId, function (err, user) {
+        Order.findById(req.params.userId, function (err, removeFromCart) {
             if (err) { res.status(500).send(err); }
             else {
-                for (var i = user.cart.length - 1; i >= 0; i--) {
-                    var currentProduct = user.cart[i];
+                for (var i = User.cart.length - 1; i >= 0; i--) {
+                    var currentProduct = User.cart[i];
                     if (currentProduct == req.query.productId) {
-                        user.cart.splice(i, 1);
+                        User.cart.splice(i, 1);
                         break;
                     }
                 }

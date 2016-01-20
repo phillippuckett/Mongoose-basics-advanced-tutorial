@@ -6,7 +6,7 @@ var birdSchema = require('./birdSchema');
 /** Schema Object*/
 var sightingSchema = Schema({
     user: { type: Schema.Type.ObjectId, ref: 'User' },
-    bird: {birdSchema},
+    bird: { birdSchema },
     confirmed: { type: Boolean, default: false },
     numberSeen: { type: Number, min: 1 },
 });

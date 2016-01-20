@@ -1,4 +1,4 @@
-var Order = require('../models/Order');
+var Order = require('./../models/orderModel');
 
 module.exports = {
     /** C */
