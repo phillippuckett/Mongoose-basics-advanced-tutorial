@@ -1,13 +1,12 @@
-/** This 'Require' is necessary for to set up the schema*/
+/** Require */
 var mongoose = require('mongoose');
+var Schema = new mongoose.Schema;
 
 /** Schema Object*/
-var sightingSchema = mongoose.Schema({
+var birdSchema = Schema({
     name: { type: 'String', lowercase: true },
     order: { type: 'String', lowercase: true, maxlength: 20 },
-    status: {
-        type: 'String',
-        lowercase: true,
+    status: { type: 'String', lowercase: true,
         enum: [
             'extinct',
             'extinct in the wild',
@@ -17,10 +16,7 @@ var sightingSchema = mongoose.Schema({
             'near threatened',
             'conservation dependant',
             'least concern'
-        ]
-    },
-    confirmed: { type: Boolean, default: false },
-    numberSeen: { type: Number, min: 1 }
+        ]},
 });
 
 /** Make the model for the schema above*/

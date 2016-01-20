@@ -1,10 +1,10 @@
-/** This 'Require' is necessary for to set up the schema*/
+/** Require */
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var Schema = new mongoose.Schema;
 var birdSchema = require('./birdSchema');
 
 /** Schema Object*/
-var sightingSchema = new mongoose.Schema({
+var sightingSchema = Schema({
     user: { type: Schema.Type.ObjectId, ref: 'User' },
     bird: [birdSchema],
     confirmed: { type: Boolean, default: false },
