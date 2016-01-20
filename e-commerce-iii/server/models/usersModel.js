@@ -1,6 +1,6 @@
 /** These 'Require's are necessary for to set up the schema*/
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var Schema = new mongoose.Schema;
 
 /** Password varification */
 var passwordVarifier = [
@@ -10,7 +10,7 @@ var passwordVarifier = [
 ];
     
 /** Schema Object */
-var userSchema = mongoose.Schema({
+var userSchema = Schema({
     name: { type: String, required: true },
     age: { type: Number, require: true },
     password: { type: String, varify: passwordVarifier },

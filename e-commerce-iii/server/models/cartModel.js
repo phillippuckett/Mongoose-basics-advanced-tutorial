@@ -1,9 +1,9 @@
 /** This 'Require' is necessary for to set up the schema*/
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var Schema = new mongoose.Schema;
 
 /** Schema Object*/
-var cartSchema = new mongoose.Schema({
+var cartSchema = Schema({
     quanity: { type: Number, min: 1, required: true },
     products: [
         { type: mongoose.Schema.Types.ObjectId, ref: 'Products', required: true },

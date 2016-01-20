@@ -1,15 +1,19 @@
+/** Require */
 var mongoose = require('mongoose');
+var Schema = new mongoose.Schema;
+var userSchema = require('./userSchema');
 
-var sightingSchema = new mongoose.Schema ({
-    User: {},
-    bird:
-    confirmed:
-    
- updateAt: { type: Date },
+var userSchema = Schema({
+    email: { type: String },
+    username: { type: String, require: true },
+    level: { type: Number },
+    location: { type: String },
+    member: { require: true },
+    updateAt: { type: Date },
 });
 
-sighitngSchema.pre('save', function (next) {
-    var user = this;
-    user.updatedAt = new Date();
+userSchema.pre('save', function (next) {
+    var User = this;
+    User.updatedAt = new Date();
     next();
 });

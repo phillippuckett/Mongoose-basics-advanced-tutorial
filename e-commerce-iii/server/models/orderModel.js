@@ -3,10 +3,10 @@ var mongoose = require('mongoose');
 var Product = require('./Product');
 var User = require('./User');
 var CartSchema = require('./Cart');
-var Schema = mongoose.Schema;
+var Schema = new mongoose.Schema;
 
 /** Schema Object */
-var orderSchema = new mongoose.Schema({
+var orderSchema = Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     quanity: { type: Number, min: 1, required: true },
     placed: { type: Date, required: true, default: Date.now },
